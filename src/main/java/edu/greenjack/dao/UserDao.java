@@ -1,6 +1,6 @@
-package dao;
+package edu.greenjack.dao;
 
-import model.User;
+import edu.greenjack.model.User;
 
 public interface UserDao {
     void saveUser(User user);
