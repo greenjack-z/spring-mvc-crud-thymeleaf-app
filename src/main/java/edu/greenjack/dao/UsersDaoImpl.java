@@ -6,10 +6,22 @@ import jakarta.transaction.Transactional;
 import edu.greenjack.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class UserDaoImpl implements UserDao{
+public class UsersDaoImpl implements UsersDao {
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Override
+    public List<User> findAll() {
+        return entityManager.createQuery("from User", User.class).getResultList();
+    }
+
+    @Override
+    public User findById(long id) {
+        return entityManager.find(User.class, id);
+    }
 
     @Override
     @Transactional
@@ -18,13 +30,14 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User getUserById(long id) {
-        return entityManager.find(User.class, id);
+    @Transactional
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
     @Override
     @Transactional
-    public void updateUser(long id, User user) {
-        entityManager.merge(user);
+    public void deleteUser(User user) {
+        entityManager.remove(user);
     }
 }

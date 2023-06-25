@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Users List</title>
 </head>
 <body>
+    <h2>List of Users</h2>
     <table>
-        <tr ></tr>
+        <thead>
+            <th>Id</th>
+            <th>User</th>
+            <th>Age</th>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${allUsers}">
+                <td th:text="${user.id}">Id</td>
+                <td th:text="${user.name}">Name</td>
+                <td th:text="${user.age}">Age</td>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
