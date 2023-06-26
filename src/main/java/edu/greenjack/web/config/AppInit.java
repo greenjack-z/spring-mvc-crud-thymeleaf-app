@@ -1,6 +1,7 @@
 package edu.greenjack.web.config;
 
 import edu.greenjack.config.PersistenceConfig;
+import edu.greenjack.web.config.WebMvcConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -15,7 +16,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{
-                WebConfig.class
+                WebMvcConfig.class
         };
     }
 
