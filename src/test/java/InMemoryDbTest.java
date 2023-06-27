@@ -21,7 +21,6 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = PersistenceConfig.class, loader = AnnotationConfigWebContextLoader.class)
 @WebAppConfiguration
-@Transactional
 public class InMemoryDbTest {
 
     List<User> userList = new ArrayList<>();
@@ -46,22 +45,18 @@ public class InMemoryDbTest {
 
     @Test
     public void findAll() {
-        userList.forEach(usersDao::saveUser);
-
         Assert.assertEquals(userList.size(), usersDao.findAll().size());
         Assert.assertEquals(userList.get(0), usersDao.findAll().get(0));
+        Assert.assertEquals(userList, usersDao.findAll());
     }
 
     @Test
     public void findById() {
-        userList.forEach(usersDao::saveUser);
         Assert.assertEquals(userList.get(0), usersDao.findById(1));
     }
 
     @Test
     public void updateUser() {
-        userList.forEach(usersDao::saveUser);
-
         User user = usersDao.findById(1);
         user.setAge(5555);
         usersDao.updateUser(user);
@@ -71,8 +66,6 @@ public class InMemoryDbTest {
 
     @Test
     public void deleteUser() {
-        userList.forEach(usersDao::saveUser);
-
         usersDao.deleteUser(usersDao.findById(2));
 
         Assert.assertEquals(userList.size() - 1, usersDao.findAll().size());

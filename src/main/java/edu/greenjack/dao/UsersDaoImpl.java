@@ -38,6 +38,6 @@ public class UsersDaoImpl implements UsersDao {
     @Override
     @Transactional
     public void deleteUser(User user) {
-        entityManager.remove(user);
+        entityManager.remove(entityManager.getReference(User.class, user.getId()));
     }
 }

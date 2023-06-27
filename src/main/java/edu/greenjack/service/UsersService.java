@@ -4,7 +4,7 @@ import edu.greenjack.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UsersService {
     List<User> findAll();
     User findById(long id);
     void saveUser(User user);
