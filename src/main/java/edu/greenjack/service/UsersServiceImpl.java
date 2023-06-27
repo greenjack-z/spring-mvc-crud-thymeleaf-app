@@ -9,31 +9,35 @@ import java.util.List;
 
 @Service
 public class UsersServiceImpl implements UsersService {
+    UsersDao usersDao;
+
     @Autowired
-    UsersDao userDao;
+    public UsersServiceImpl(UsersDao usersDao) {
+        this.usersDao = usersDao;
+    }
 
     @Override
     public List<User> findAll() {
-        return userDao.findAll();
+        return usersDao.findAll();
     }
 
     @Override
     public User findById(long id) {
-        return userDao.findById(id);
+        return usersDao.findById(id);
     }
 
     @Override
     public void saveUser(User user) {
-        userDao.saveUser(user);
+        usersDao.saveUser(user);
     }
 
     @Override
     public void updateUser(User user) {
-        userDao.updateUser(user);
+        usersDao.updateUser(user);
     }
 
     @Override
     public void deleteUser(User user) {
-        userDao.deleteUser(user);
+        usersDao.deleteUser(user);
     }
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:ital@1&display=swap"/>
 </head>
 <body>
-
+    <div class="container">
     <table>
         <caption>Table of a registered Users</caption>
         <tr>
@@ -38,15 +38,19 @@
     </table>
 
     <form action="#" th:object="${user}" method="post">
-        <input id="id" name="id" type="hidden" value="0"/>
-        <div><label for="name">user name:</label></div>
-        <div><input id="name" name="name" type="text" placeholder="user name"/></div>
-        <div><label for="age">user age:</label></div>
-        <div><input id="age" name="age" type="number" placeholder="user age"/></div>
-        <input type="submit" value="add user" th:formaction="@{/users/add}"/>
-        <input type="submit" value="update user" th:formaction="@{/users/update}"/>
-        <input type="submit" value="delete user" th:formaction="@{/users/delete}"/>
+        <div class="grid-container">
+            <div>
+                <input id="id" name="id" type="hidden" value="0"/>
+                <input id="name" name="name" type="text" placeholder="user name"/>
+                <input id="age" name="age" type="number" placeholder="user age"/>
+            </div>
+            <div>
+                <input type="submit" value="add user" th:formaction="@{/users/add}"/>
+                <input type="submit" value="update user" th:formaction="@{/users/update}"/>
+                <input class="delete" type="submit" value="delete user" th:formaction="@{/users/delete}"/>
+            </div>
+        </div>
     </form>
-
+    </div>
 </body>
 </html>

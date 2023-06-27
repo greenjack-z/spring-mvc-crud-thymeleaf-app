@@ -24,8 +24,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class PersistenceConfig {
 
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public PersistenceConfig(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {

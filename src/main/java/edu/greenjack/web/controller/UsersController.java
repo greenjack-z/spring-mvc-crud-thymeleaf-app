@@ -13,8 +13,13 @@ import java.util.List;
 @Controller
 @ComponentScan("service")
 public class UsersController {
+    private static final String USERS_PAGE = "redirect:/users";
+    private final UsersService usersService;
+
     @Autowired
-    UsersService usersService;
+    public UsersController(UsersService usersService) {
+        this.usersService = usersService;
+    }
 
     @GetMapping(value = "/")
     public String test() {
@@ -29,19 +34,19 @@ public class UsersController {
     @PostMapping("/users/add")
     public String addUser(@ModelAttribute User user) {
         usersService.saveUser(new User(user.getName(), user.getAge()));
-        return "users";
+        return USERS_PAGE;
     }
 
     @PostMapping("/users/update")
     public String updateUser(@ModelAttribute User user, Model model) {
         usersService.updateUser(user);
-        return "users";
+        return USERS_PAGE;
     }
 
     @PostMapping("/users/delete")
     public String deleteUser(@ModelAttribute User user, Model model) {
         usersService.deleteUser(user);
-        return "users";
+        return USERS_PAGE;
     }
 
     @ModelAttribute("allUsers")

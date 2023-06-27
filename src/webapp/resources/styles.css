@@ -1,6 +1,19 @@
 * {
     font-family: 'Roboto', sans-serif;
-     box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: auto;
+    margin: auto;
+    max-width: 80%;
+    display: block;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0px;
 }
 
 h2 {
@@ -10,10 +23,9 @@ h2 {
 
 table {
     font-size: 16px;
-    max-width: 70%;
-    width: 70%;
+    width: 100%;
     border-collapse: collapse;
-    margin: 0 0 30px 0;
+    margin: 0 0 10px 0;
 }
 
 caption {
@@ -42,12 +54,21 @@ td {
     transition: .3s linear;
 }
 
+input {
+  float: left;
+  width: 99%;
+  padding: 15px 10px;
+  margin: 3px 0px 0px 0px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
 input[type=submit] {
-  width: 20%;
+  float: right;
   background-color: #04AA6D;
   color: white;
-  padding: 10px 20px;
-  margin: 5px 0;
+  padding: 8px;
+  margin: 2px 0px 0px 0px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
@@ -57,13 +78,10 @@ input[type=submit]:hover {
   background-color: #04BB6D;
 }
 
-input {
-  width: 70%;
-  padding: 5px 10px;
-  margin: 5px 0px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+
+
+input[class=delete] {
+    background-color: red;
 }
 
 label {
