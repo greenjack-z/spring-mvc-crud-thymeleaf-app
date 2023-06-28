@@ -2,8 +2,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Users List</title>
-    <link rel="stylesheet" href="../../resources/styles.css" type="text/css"/>
+    <title th:text="#{users.title}">Users List</title>
+    <link rel="stylesheet" href="../../resources/styles.css" th:href="@{/resources/styles.css}" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:ital@1&display=swap"/>
@@ -19,14 +19,13 @@
 
     <div class="container">
         <table>
-            <caption>Table of a registered Users</caption>
+            <caption th:text="#{users.table.caption}">Table of a registered Users</caption>
             <tr>
-                <th>user id</th>
-                <th>user name</th>
-                <th>user age</th>
+                <th th:text="#{users.table.header.id}">user id</th>
+                <th th:text="#{users.table.header.name}">user name</th>
+                <th th:text="#{users.table.header.age}">user age</th>
             </tr>
             <tr th:each="user : ${allUsers}" th:onClick="rowClicked([[${user.id}]], [[${user.name}]], [[${user.age}]])">
-
                 <td th:text="${user.id}">id_placeholder</td>
                 <td th:text="${user.name}">name_placeholder</td>
                 <td th:text="${user.age}">age_placeholder</td>
@@ -36,13 +35,13 @@
             <div class="grid-container">
                 <div>
                     <input id="id" name="id" type="hidden" value="0"/>
-                    <input id="name" name="name" type="text" placeholder="user name"/>
-                    <input id="age" name="age" type="number" placeholder="user age"/>
+                    <input id="name" name="name" type="text" placeholder="user name" th:placeholder="#{users.name.placeholder}"/>
+                    <input id="age" name="age" type="number" placeholder="user age" th:placeholder="#{users.age.placeholder}"/>
                 </div>
                 <div>
-                    <input type="submit" value="add user" th:formaction="@{/users/add}"/>
-                    <input type="submit" value="update user" th:formaction="@{/users/update}"/>
-                    <input class="delete" type="submit" value="delete user" th:formaction="@{/users/delete}"/>
+                    <input type="submit" value="add user" th:value="#{users.button.add}" th:formaction="@{/users/add}"/>
+                    <input type="submit" value="update user" th:value="#{users.button.update}" th:formaction="@{/users/update}"/>
+                    <input class="delete" type="submit" value="delete user" th:value="#{users.button.delete}" th:formaction="@{/users/delete}"/>
                 </div>
             </div>
         </form>
