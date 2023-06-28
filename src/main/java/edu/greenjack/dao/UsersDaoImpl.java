@@ -1,14 +1,14 @@
 package edu.greenjack.dao;
 
+import edu.greenjack.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import edu.greenjack.model.User;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository
 public class UsersDaoImpl implements UsersDao {
     @PersistenceContext
     private EntityManager entityManager;

@@ -9,48 +9,43 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:ital@1&display=swap"/>
 </head>
 <body>
+    <script>
+        function rowClicked(id, name, age) {
+            document.getElementById("id").value = id;
+            document.getElementById("name").value = name;
+            document.getElementById("age").value = age;
+        }
+    </script>
+
     <div class="container">
-    <table>
-        <caption>Table of a registered Users</caption>
-        <tr>
-            <th>user id</th>
-            <th>user name</th>
-            <th>user age</th>
-        </tr>
-        <tr th:each="user : ${allUsers}"
-            th:currentId="${user.id}"
-            th:currentName="${user.name}"
-            th:currentAge="${user.age}"
-            th:onClick="rowClicked(this.getAttribute('currentId'), this.getAttribute('currentName'), this.getAttribute('currentAge'))">
+        <table>
+            <caption>Table of a registered Users</caption>
+            <tr>
+                <th>user id</th>
+                <th>user name</th>
+                <th>user age</th>
+            </tr>
+            <tr th:each="user : ${allUsers}" th:onClick="rowClicked([[${user.id}]], [[${user.name}]], [[${user.age}]])">
 
-            <script>
-                function rowClicked(id, name, age) {
-                    document.getElementById("id").value = id;
-                    document.getElementById("name").value = name;
-                    document.getElementById("age").value = age;
-                }
-            </script>
-
-            <td th:text="${user.id}">id_placeholder</td>
-            <td th:text="${user.name}">name_placeholder</td>
-            <td th:text="${user.age}">age_placeholder</td>
-        </tr>
-    </table>
-
-    <form action="#" th:object="${user}" method="post">
-        <div class="grid-container">
-            <div>
-                <input id="id" name="id" type="hidden" value="0"/>
-                <input id="name" name="name" type="text" placeholder="user name"/>
-                <input id="age" name="age" type="number" placeholder="user age"/>
+                <td th:text="${user.id}">id_placeholder</td>
+                <td th:text="${user.name}">name_placeholder</td>
+                <td th:text="${user.age}">age_placeholder</td>
+            </tr>
+        </table>
+        <form action="#" th:object="${user}" method="post">
+            <div class="grid-container">
+                <div>
+                    <input id="id" name="id" type="hidden" value="0"/>
+                    <input id="name" name="name" type="text" placeholder="user name"/>
+                    <input id="age" name="age" type="number" placeholder="user age"/>
+                </div>
+                <div>
+                    <input type="submit" value="add user" th:formaction="@{/users/add}"/>
+                    <input type="submit" value="update user" th:formaction="@{/users/update}"/>
+                    <input class="delete" type="submit" value="delete user" th:formaction="@{/users/delete}"/>
+                </div>
             </div>
-            <div>
-                <input type="submit" value="add user" th:formaction="@{/users/add}"/>
-                <input type="submit" value="update user" th:formaction="@{/users/update}"/>
-                <input class="delete" type="submit" value="delete user" th:formaction="@{/users/delete}"/>
-            </div>
-        </div>
-    </form>
+        </form>
     </div>
 </body>
 </html>

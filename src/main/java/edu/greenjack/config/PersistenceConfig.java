@@ -46,8 +46,8 @@ public class PersistenceConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("jdbc.driver")));
         dataSource.setUrl(environment.getProperty("jdbc.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.user"));
-        dataSource.setPassword(environment.getProperty("jdbc.pass"));
+        dataSource.setUsername(System.getenv("jdbc.user"));
+        dataSource.setPassword(System.getenv("jdbc.pass"));
         return dataSource;
     }
 

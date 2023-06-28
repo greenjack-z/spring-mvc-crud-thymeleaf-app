@@ -13,10 +13,6 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
 
-    <logger name="org.hibernate.SQL" level="debug" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
