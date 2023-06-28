@@ -1,6 +1,5 @@
-package edu.greenjack.web.config;
+package edu.greenjack.config;
 
-import edu.greenjack.config.PersistenceConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {

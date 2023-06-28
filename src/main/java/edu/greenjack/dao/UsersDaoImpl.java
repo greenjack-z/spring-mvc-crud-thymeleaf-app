@@ -3,7 +3,6 @@ package edu.greenjack.dao;
 import edu.greenjack.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,19 +23,16 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    @Transactional
     public void saveUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(User user) {
         entityManager.merge(user);
     }
 
     @Override
-    @Transactional
     public void deleteUser(User user) {
         entityManager.remove(entityManager.getReference(User.class, user.getId()));
     }

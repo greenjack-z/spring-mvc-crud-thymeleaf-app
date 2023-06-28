@@ -1,4 +1,4 @@
-package edu.greenjack.web.config;
+package edu.greenjack.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;

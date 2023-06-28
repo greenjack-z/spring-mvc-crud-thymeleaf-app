@@ -2,6 +2,7 @@ package edu.greenjack.service;
 
 import edu.greenjack.dao.UsersDao;
 import edu.greenjack.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,16 +28,19 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    @Transactional
     public void saveUser(User user) {
         usersDao.saveUser(user);
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         usersDao.updateUser(user);
     }
 
     @Override
+    @Transactional
     public void deleteUser(User user) {
         usersDao.deleteUser(user);
     }

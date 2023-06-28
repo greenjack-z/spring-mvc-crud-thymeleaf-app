@@ -1,8 +1,7 @@
-package edu.greenjack.web.controller;
+package edu.greenjack.web;
 
 import edu.greenjack.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import edu.greenjack.service.UsersService;
@@ -10,7 +9,6 @@ import edu.greenjack.service.UsersService;
 import java.util.List;
 
 @Controller
-@ComponentScan("service")
 public class UsersController {
     private static final String REDIRECT_USERS = "redirect:/users";
     private final UsersService usersService;
